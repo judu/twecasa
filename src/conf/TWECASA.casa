@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<casa xmlns="http://java.sun.com/xml/ns/casa" xmlns:ns1="http://j2ee.netbeans.org/wsdl/EventsService/eventsDBWSDL" xmlns:ns2="http://j2ee.netbeans.org/wsdl/AlmaTWE/clientTransWrapper" xmlns:ns3="http://enterprise.netbeans.org/bpel/AlmaTWE/almaTWE" xmlns:ns4="http://j2ee.netbeans.org/wsdl/EventsService/eventTransactions" xmlns:ns5="http://enterprise.netbeans.org/bpel/EventsService/eventsService" xmlns:xlink="http://www.w3.org/2000/xlink">
+    <endpoints>
+        <endpoint endpoint-name="port" interface-name="ns1:jdbcPortType" name="endpoint1" service-name="ns1:service"/>
+        <endpoint endpoint-name="ALMATWEPort" interface-name="ns2:clientTransWrapperPortType" name="endpoint2" service-name="ns2:ALMATWEService"/>
+        <endpoint display-name="clientLink" endpoint-name="clientTransWrapperPortTypeRole_myRole" file-path="almaTWE.bpel" interface-name="ns2:clientTransWrapperPortType" name="endpoint3" process-name="almaTWE" service-name="ns3:clientLink"/>
+        <endpoint display-name="eventService" endpoint-name="eventTransactionsPortTypeRole_partnerRole" file-path="almaTWE.bpel" interface-name="ns4:eventTransactionsPortType" name="endpoint4" process-name="almaTWE" service-name="ns3:eventService"/>
+        <endpoint display-name="almatwe" endpoint-name="eventTransactionsPortTypeRole_myRole" file-path="eventsService.bpel" interface-name="ns4:eventTransactionsPortType" name="endpoint5" process-name="eventsService" service-name="ns5:almatwe"/>
+        <endpoint display-name="EventDatabase" endpoint-name="jdbcPortTypeRole_partnerRole" file-path="eventsService.bpel" interface-name="ns1:jdbcPortType" name="endpoint6" process-name="eventsService" service-name="ns5:EventDatabase"/>
+    </endpoints>
+    <service-units>
+        <service-engine-service-unit artifacts-zip="AlmaTWE.jar" component-name="sun-bpel-engine" defined="true" description="Represents this Service Unit" internal="true" name="TWECASA-AlmaTWE" unit-name="AlmaTWE" unknown="false" x="274" y="97">
+            <provides endpoint="endpoint3"/>
+            <consumes endpoint="endpoint4"/>
+        </service-engine-service-unit>
+        <service-engine-service-unit artifacts-zip="EventsService.jar" component-name="sun-bpel-engine" defined="true" description="Represents this Service Unit" internal="true" name="TWECASA-EventsService" unit-name="EventsService" unknown="false" x="51" y="97">
+            <provides endpoint="endpoint5"/>
+            <consumes endpoint="endpoint6"/>
+        </service-engine-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-database-binding.jar" component-name="sun-database-binding" description="Represents this Service Unit" name="TWECASA-sun-database-binding" unit-name="sun-database-binding">
+            <ports>
+                <port x="67" y="114">
+                    <link xlink:href="../jbiServiceUnits/EventsService/eventsDBWSDL.wsdl#xpointer(/definitions/service[@name='service']/port[@name='port'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-http-binding.jar" component-name="sun-http-binding" description="Represents this Service Unit" name="TWECASA-sun-http-binding" unit-name="sun-http-binding">
+            <ports>
+                <port x="67" y="37">
+                    <link xlink:href="../jbiServiceUnits/AlmaTWE/clientTransWrapper.wsdl#xpointer(/definitions/service[@name='ALMATWEService']/port[@name='ALMATWEPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint2"/>
+                    <provides endpoint="endpoint2"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+    </service-units>
+    <connections>
+        <connection consumer="endpoint6" provider="endpoint1" state="unchanged"/>
+        <connection consumer="endpoint4" provider="endpoint5" state="unchanged"/>
+        <connection consumer="endpoint2" provider="endpoint3" state="unchanged"/>
+    </connections>
+    <porttypes>
+        <link xlink:href="../jbiServiceUnits/META-INF/AlmaTWE/src/_references/_projects/EventsService/src/eventTransactions.wsdl#xpointer(/definitions/portType[@name='eventTransactionsPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/AlmaTWE/clientTransWrapper.wsdl#xpointer(/definitions/portType[@name='clientTransWrapperPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/EventsService/eventTransactions.wsdl#xpointer(/definitions/portType[@name='eventTransactionsPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/EventsService/eventsDBWSDL.wsdl#xpointer(/definitions/portType[@name='jdbcPortType'])" xlink:type="simple"/>
+    </porttypes>
+    <bindings>
+        <link xlink:href="../jbiServiceUnits/AlmaTWE/clientTransWrapper.wsdl#xpointer(/definitions/binding[@name='ALMATWEBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/EventsService/eventsDBWSDL.wsdl#xpointer(/definitions/binding[@name='binding'])" xlink:type="simple"/>
+    </bindings>
+    <services>
+        <link xlink:href="../jbiServiceUnits/AlmaTWE/clientTransWrapper.wsdl#xpointer(/definitions/service[@name='ALMATWEService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/EventsService/eventsDBWSDL.wsdl#xpointer(/definitions/service[@name='service'])" xlink:type="simple"/>
+    </services>
+    <regions>
+        <region name="WSDL Endpoints" width="150"/>
+        <region name="JBI Modules" width="500"/>
+        <region name="External Modules" width="200"/>
+    </regions>
+</casa>

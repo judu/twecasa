@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://xml.netbeans.org/schema/eventServiceExchange"
+    xmlns:tns="http://xml.netbeans.org/schema/eventServiceExchange"
+    elementFormDefault="qualified">
+    <xsd:complexType name="eventLookupRequestType">
+        <xsd:sequence>
+            <xsd:element name="city" type="xsd:string"/>
+            <xsd:element name="date" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="eventLookupResponseType">
+        <xsd:sequence maxOccurs="unbounded" minOccurs="0">
+            <xsd:element name="event" type="tns:eventType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="eventType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="city" type="xsd:string"/>
+            <xsd:element name="date" type="xsd:string"/>
+            <xsd:element name="id" type="xsd:int"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="lookupRequest" type="tns:eventLookupRequestType"/>
+    <xsd:element name="lookupResponse" type="tns:eventLookupResponseType"/>
+</xsd:schema>

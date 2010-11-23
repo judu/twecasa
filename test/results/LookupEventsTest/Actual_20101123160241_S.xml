@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Body>
+    <lookupResponse xmlns="http://xml.netbeans.org/schema/eventServiceExchange" xmlns:msgns="http://j2ee.netbeans.org/wsdl/AlmaTWE/clientTransWrapper">
+      <event xmlns:msgns="http://j2ee.netbeans.org/wsdl/EventsService/eventTransactions" xmlns:ns0="http://j2ee.netbeans.org/wsdl/AlmaTWE/clientTransWrapper">
+        <name isNull="false">Chœurs de l'armée rouge</name>
+        <city isNull="false">NANTES</city>
+        <date isNull="false">2010-11-12</date>
+        <id isNull="false">1</id>
+      </event>
+    </lookupResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

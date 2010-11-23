@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns0="http://enterprise.netbeans.org/bpel/AlmaTWE/almaTWE" xmlns:ns1="http://j2ee.netbeans.org/wsdl/AlmaTWE/clientTransWrapper" xmlns:ns2="http://j2ee.netbeans.org/wsdl/EventsService/eventTransactions" xmlns:ns3="http://www.sun.com/jbi/descriptor/service-unit" version="1.0">
+    <services binding-component="false">
+        <provides endpoint-name="clientTransWrapperPortTypeRole_myRole" interface-name="ns1:clientTransWrapperPortType" service-name="ns0:clientLink">
+            <ns3:display-name>clientLink</ns3:display-name>
+            <ns3:process-name>almaTWE</ns3:process-name>
+            <ns3:file-path>almaTWE.bpel</ns3:file-path>
+        </provides>
+        <consumes endpoint-name="eventTransactionsPortTypeRole_partnerRole" interface-name="ns2:eventTransactionsPortType" service-name="ns0:eventService">
+            <ns3:display-name>eventService</ns3:display-name>
+            <ns3:process-name>almaTWE</ns3:process-name>
+            <ns3:file-path>almaTWE.bpel</ns3:file-path>
+        </consumes>
+    </services>
+</jbi>
